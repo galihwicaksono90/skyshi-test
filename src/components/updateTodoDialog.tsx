@@ -51,7 +51,7 @@ export default function UpdateTodoDialog({
   };
 
   return (
-    <Dialog {...props}>
+    <Dialog {...props} modal={false}>
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader className="border-blue-100">
           <DialogTitle>Tambah List Item</DialogTitle>

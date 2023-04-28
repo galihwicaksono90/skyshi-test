@@ -40,7 +40,7 @@ export default function PrioritySelect({ ...props }: PrioritySelectProps) {
       <SelectTrigger dataCy="modal-add-priority-dropdown">
         <SelectValue />
       </SelectTrigger>
-      <SelectContent data-cy="modal-add-priority-dropdown">
+      <SelectContent data-cy="modal-add-priority-item">
         {options.map((option) => (
           <SelectItem value={option.value} key={option.value}>
             <div className="flex justify-between items-center">
