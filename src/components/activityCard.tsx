@@ -21,12 +21,15 @@ export default function ActivityCard({
     <Link href={`/activity/${id}`} passHref>
       <Card
         className="p-8 h-[234px] flex flex-col justify-between shadow-sm hover:shadow-md"
-        data-cy="activity-card"
+        data-cy="activity-item"
       >
-        <h4 className="font-bold text-lg">{title}</h4>
+        <h4 className="font-bold text-lg" data-cy="activity-item-title">
+          {title}
+        </h4>
         <div className="flex justify-between w-full mt-auto items-center text-muted-foreground">
-          <p>{parseDate(date)}</p>
+          <p data-cy="activity-item-date">{parseDate(date)}</p>
           <Button
+            data-cy="activity-item-delete-button"
             variant="ghost"
             className="w-10 rounded-full p-0"
             onClick={(e) => {
