@@ -26,7 +26,7 @@ export default function DeleteDialog({
   type = "activity",
 }: DeleteDialogProps) {
   return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
+    <AlertDialog open={open} onOpenChange={setOpen} data-cy="modal-delete">
       <AlertDialogContent>
         <AlertDialogHeader className="flex flex-col items-center">
           <AlertTriangle className="h-14 w-14 text-destructive mb-10" />

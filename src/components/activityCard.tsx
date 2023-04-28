@@ -19,7 +19,10 @@ export default function ActivityCard({
 }: ActivityCardProps) {
   return (
     <Link href={`/activity/${id}`} passHref>
-      <Card className="p-8 h-[234px] flex flex-col justify-between shadow-sm hover:shadow-md">
+      <Card
+        className="p-8 h-[234px] flex flex-col justify-between shadow-sm hover:shadow-md"
+        data-cy="activity-card"
+      >
         <h4 className="font-bold text-lg">{title}</h4>
         <div className="flex justify-between w-full mt-auto items-center text-muted-foreground">
           <p>{parseDate(date)}</p>

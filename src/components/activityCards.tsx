@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Loader, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import ActivityEmptyState from "@/components/activityEmptyState";
 import ActivityCard from "@/components/activityCard";
 import { useGetActivities } from "@/hooks/queries";
@@ -71,8 +71,13 @@ export default function Activiti() {
   return (
     <>
       <div className="flex items-center justify-between w-full mb-[49px]">
-        <h1 className="scroll-m-20 text-4xl font-bold lg:text-4xl">Activity</h1>
-        <Button onClick={onCreate} size="lg">
+        <h1
+          className="scroll-m-20 text-4xl font-bold lg:text-4xl"
+          data-cy="activity-title"
+        >
+          Activity
+        </h1>
+        <Button onClick={onCreate} size="lg" data-cy="activity-add-button">
           <Plus />
           Tambah
         </Button>
