@@ -3,7 +3,10 @@ import Image from "next/image";
 export default function TodoEmptyState() {
   return (
     <div className="container mx-auto">
-      <div className="relative flex place-items-center max-w-[767px] h-[490px]">
+      <div
+        className="relative flex place-items-center max-w-[767px] h-[490px]"
+        data-cy="todo-empty-state"
+      >
         <Image
           src="/todo-empty-state.svg"
           alt="Vercel Logo"

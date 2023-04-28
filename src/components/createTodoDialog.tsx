@@ -50,6 +50,7 @@ export default function CreateTodoDialog({
             <div>
               <Label htmlFor="title">Nama List Item</Label>
               <Input
+                data-cy="modal-add-name-input"
                 id="title"
                 value={title}
                 name="title"
@@ -74,6 +75,7 @@ export default function CreateTodoDialog({
               type="submit"
               loading={loading}
               disabled={title === ""}
+              data-cy="modal-add-save-button"
             >
               Simpan
             </LoadingButton>

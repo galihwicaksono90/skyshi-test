@@ -60,7 +60,10 @@ export default function ActivityTitle({
           />
         </form>
       ) : (
-        <h1 className="scroll-m-20 text-4xl font-bold lg:text-4xl">
+        <h1
+          className="scroll-m-20 text-4xl font-bold lg:text-4xl"
+          data-cy="todo-title"
+        >
           {currentTitle}
         </h1>
       )}
@@ -68,6 +71,7 @@ export default function ActivityTitle({
         className="rounded-full w-5 p-0 text-muted-foreground"
         variant="ghost"
         onClick={onEdit}
+        data-cy="todo-title-edit-button"
       >
         <Pencil />
       </Button>

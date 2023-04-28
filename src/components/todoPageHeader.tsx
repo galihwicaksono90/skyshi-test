@@ -55,7 +55,7 @@ export default function TodoPageHeader({
       </div>
       <div className="flex space-x-2">
         <SortSelect />
-        <Button onClick={() => setOpen(true)}>
+        <Button onClick={() => setOpen(true)} data-cy="todo-add-button">
           <Plus />
           Tambah
         </Button>

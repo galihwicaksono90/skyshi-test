@@ -36,7 +36,7 @@ type PrioritySelectProps = SelectProps & {};
 
 export default function PrioritySelect({ ...props }: PrioritySelectProps) {
   return (
-    <Select {...props}>
+    <Select {...props} data-cy="modal-add-priority-dropdown">
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
