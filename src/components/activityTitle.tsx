@@ -58,23 +58,33 @@ export default function ActivityTitle({
             className="border-b-slate-500 border-t-0 border-r-0 border-l-0 rounded-none text-4xl font-bold"
             ref={ref}
           />
+          <Button
+            className="rounded-full w-5 p-0 text-muted-foreground"
+            variant="ghost"
+            data-cy="todo-title-edit-button"
+            type="submit"
+          >
+            <Pencil />
+          </Button>
         </form>
       ) : (
-        <h1
-          className="scroll-m-20 text-4xl font-bold lg:text-4xl"
-          data-cy="todo-title"
-        >
-          {currentTitle}
-        </h1>
+        <>
+          <h1
+            className="scroll-m-20 text-4xl font-bold lg:text-4xl"
+            data-cy="todo-title"
+          >
+            {currentTitle}
+          </h1>
+          <Button
+            className="rounded-full w-5 p-0 text-muted-foreground"
+            variant="ghost"
+            onClick={onEdit}
+            data-cy="todo-title-edit-button"
+          >
+            <Pencil />
+          </Button>
+        </>
       )}
-      <Button
-        className="rounded-full w-5 p-0 text-muted-foreground"
-        variant="ghost"
-        onClick={onEdit}
-        data-cy="todo-title-edit-button"
-      >
-        <Pencil />
-      </Button>
     </>
   );
 }

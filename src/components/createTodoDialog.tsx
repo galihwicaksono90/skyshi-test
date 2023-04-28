@@ -40,7 +40,7 @@ export default function CreateTodoDialog({
 
   return (
     <Dialog {...props}>
-      <DialogContent className="sm:max-w-[800px]">
+      <DialogContent className="sm:max-w-[800px]" data-cy="modal-add">
         <DialogHeader className="border-blue-100">
           <DialogTitle>Tambah List Item</DialogTitle>
         </DialogHeader>
