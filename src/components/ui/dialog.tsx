@@ -47,10 +47,7 @@ const DialogContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <DialogPortal>
-    <DialogOverlay
-      style={{ pointerEvents: "none" }}
-      data-cy="activity-item-delete-button"
-    />
+    <DialogOverlay style={{ pointerEvents: "none" }} />
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
