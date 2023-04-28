@@ -13,16 +13,15 @@ export const activitiesSchema = z.object({
   data: z.array(activitySchema),
 });
 
+export const todoItemSchema = z.object({
+  id: z.number(),
+  is_active: z.number(),
+  priority: z.string(),
+  title: z.string(),
+});
+
 export const todosSchema = activitySchema.extend({
-  todo_items: z.array(
-    z.object({
-      activity_group_id: z.number(),
-      id: z.number(),
-      is_active: z.number(),
-      priority: z.string(),
-      title: z.string(),
-    })
-  ),
+  todo_items: z.array(todoItemSchema),
 });
 
 export const updateTodoSchema = z.object({

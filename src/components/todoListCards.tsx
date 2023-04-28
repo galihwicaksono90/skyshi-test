@@ -15,6 +15,7 @@ import TodoEmptyState from "@/components/emptyTodo";
 import TodoPageHeader from "./todoPageHeader";
 import { useToast } from "./ui/use-toast";
 import Loading from "./loading";
+import { SortOption, sortTodo } from "./sortSelect";
 
 export default function TodoListCards({ id }: { id: string }) {
   const { toast } = useToast();
@@ -22,6 +23,7 @@ export default function TodoListCards({ id }: { id: string }) {
     id: number;
     title: string;
   } | null>(null);
+  const [sort, setSort] = useState<SortOption>("terbaru");
   const [updateId, setUpdateId] = useState<number | null>(null);
   const { data, refetch, loading } = useGetActivity({ id });
 
@@ -38,6 +40,7 @@ export default function TodoListCards({ id }: { id: string }) {
   const { mutate: deleteTodo } = useDeleteTodo({
     onSuccess: () => {
       refetch();
+      setToDelete(null);
       toast({
         description: "Berhasil menghapus to do",
       });
@@ -86,9 +89,10 @@ export default function TodoListCards({ id }: { id: string }) {
   return (
     <>
       <TodoPageHeader
+        sort={sort}
+        setSort={setSort}
         className="mb-8"
         onAddTodo={() => {
-          console.log("refetching");
           refetch();
         }}
         id={id}
@@ -104,7 +108,7 @@ export default function TodoListCards({ id }: { id: string }) {
         <TodoEmptyState />
       ) : (
         <ul className="flex flex-col space-y-4 w-full">
-          {data?.todo_items?.map((item) => (
+          {sortTodo(data?.todo_items ?? [], sort).map((item) => (
             <li key={item.id}>
               <Card className="p-8 w-full">
                 <div className="flex justify-between items-center">

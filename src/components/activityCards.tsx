@@ -22,7 +22,7 @@ export default function Activiti() {
       setCurrentActivity(null);
       await refetch();
       toast({
-        description: "Activity deleted",
+        description: "Aktifitas berhasil dihapus",
       });
     },
     onError: (error: Error) => {
@@ -37,7 +37,7 @@ export default function Activiti() {
     onSuccess: () => {
       refetch();
       toast({
-        description: "Activity created successfully",
+        description: "Aktifitas berhasil dibuat",
       });
     },
     onError: (error: Error) => {

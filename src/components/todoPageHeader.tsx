@@ -1,5 +1,5 @@
 import ActivityTitle, { ActivityTitleProps } from "@/components/activityTitle";
-import SortSelect from "@/components/sortSelect";
+import SortSelect, { SortOption } from "@/components/sortSelect";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, Plus } from "lucide-react";
@@ -14,9 +14,13 @@ interface TodoPageHeaderProps {
   activityTitleProps: ActivityTitleProps;
   onAddTodo: () => void;
   className?: string;
+  sort: SortOption;
+  setSort: (value: SortOption) => void;
 }
 
 export default function TodoPageHeader({
+  sort,
+  setSort,
   id,
   className,
   onAddTodo,
@@ -54,7 +58,7 @@ export default function TodoPageHeader({
         <ActivityTitle {...activityTitleProps} />
       </div>
       <div className="flex space-x-2">
-        <SortSelect />
+        <SortSelect value={sort} onChange={(value) => setSort(value)} />
         <Button onClick={() => setOpen(true)} data-cy="todo-add-button">
           <Plus />
           Tambah
