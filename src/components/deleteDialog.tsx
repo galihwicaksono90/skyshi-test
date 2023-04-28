@@ -6,6 +6,7 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { AlertTriangle } from "lucide-react";
 import { buttonVariants } from "./ui/button";
@@ -26,10 +27,14 @@ export default function DeleteDialog({
   type = "activity",
 }: DeleteDialogProps) {
   return (
-    <AlertDialog open={open} onOpenChange={setOpen} data-cy="modal-delete">
-      <AlertDialogContent>
+    <AlertDialog open={open} onOpenChange={setOpen}>
+      <AlertDialogContent data-cy="modal-delete">
         <AlertDialogHeader className="flex flex-col items-center">
-          <AlertTriangle className="h-14 w-14 text-destructive mb-10" />
+          <AlertTriangle
+            className="h-14 w-14 text-destructive mb-10"
+            data-cy="modal-delete-icon"
+          />
+          <AlertDialogTitle data-cy="modal-delete-title"></AlertDialogTitle>
           <AlertDialogDescription className="text-center text-lg">
             Apakah anda yakin menghapus {type} <br />
             <b>&quot;{title}&quot;</b>?
@@ -38,12 +43,14 @@ export default function DeleteDialog({
         <AlertDialogFooter className="justify-around">
           <AlertDialogCancel
             className={buttonVariants({ variant: "secondary", size: "lg" })}
+            data-cy="modal-delete-cancel-button"
           >
             Batal
           </AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
             className={buttonVariants({ variant: "destructive", size: "lg" })}
+            data-cy="modal-delete-confirm-button"
           >
             Hapus
           </AlertDialogAction>
