@@ -34,7 +34,7 @@ export function useGetActivity<TError = unknown>({ id }: { id: string }) {
 
   useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, []);
 
   return { loading, error, data, refetch, fetching };
 }

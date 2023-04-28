@@ -45,7 +45,7 @@ export function useGetTodo<TError = unknown>(
 
   useEffect(() => {
     refetch();
-  }, [id, refetch]);
+  }, [id]);
 
   return { loading, error, data, refetch, fetching };
 }

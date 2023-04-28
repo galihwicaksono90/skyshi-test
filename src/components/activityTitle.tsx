@@ -28,7 +28,7 @@ export default function ActivityTitle({
 
   useEffect(() => {
     setCurrentTitle(title);
-  }, [title, setCurrentTitle]);
+  }, []);
 
   useEffect(() => {
     if (!!ref.current && isEditing) {
