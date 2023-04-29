@@ -38,6 +38,7 @@ export const sortOptions = {
   },
   za: {
     label: "Z-A",
+
     fn: (todos) => {
       return todos.sort((a, b) => b.title.localeCompare(a.title));
     },
