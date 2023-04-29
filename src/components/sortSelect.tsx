@@ -83,16 +83,27 @@ export default function SortSelect({ value, onChange }: SortSelectProps) {
       value={value}
     >
       <Trigger asChild>
-        <Button className="rounded-full w-10 p-0" variant="outline">
+        <Button
+          className="rounded-full w-10 p-0"
+          variant="outline"
+          data-cy="todo-sort-button"
+        >
           <ArrowDownUp />
         </Button>
       </Trigger>
       <SelectContent>
         {Object.keys(sortOptions).map((key) => (
           <SelectItem value={key} key={key}>
-            <div className="flex justify-between items-center w-full">
-              <div className="mr-4">{sortOptions[key as SortOption].icon}</div>
-              <div>{sortOptions[key as SortOption].label}</div>
+            <div
+              className="flex justify-between items-center w-full"
+              data-cy="sort-selection"
+            >
+              <div className="mr-4" data-cy="sort-selection-icon">
+                {sortOptions[key as SortOption].icon}
+              </div>
+              <div data-cy="sort-selection-title">
+                {sortOptions[key as SortOption].label}
+              </div>
             </div>
           </SelectItem>
         ))}

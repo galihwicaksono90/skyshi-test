@@ -133,6 +133,7 @@ export default function TodoListCards({ id }: { id: string }) {
                     </Button>
                   </div>
                   <Button
+                    data-cy="todo-item-delete-button"
                     className="rounded-full w-10 p-0"
                     variant="ghost"
                     onClick={() =>
