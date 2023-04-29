@@ -68,6 +68,7 @@ export default function CreateTodoModal({
                 <Label htmlFor="title">Nama List Item</Label>
                 <Input
                   data-cy="modal-add-name-input"
+                  placeholder="Tambahkan nama activity"
                   id="title"
                   value={title}
                   name="title"
@@ -90,8 +91,7 @@ export default function CreateTodoModal({
             <div className="flex justify-end px-6">
               <LoadingButton
                 type="submit"
-                loading={loading}
-                disabled={title === ""}
+                disabled={title === "" || priority === undefined}
                 data-cy="modal-add-save-button"
               >
                 Simpan
