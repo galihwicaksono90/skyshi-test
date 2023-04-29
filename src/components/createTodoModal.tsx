@@ -91,7 +91,7 @@ export default function CreateTodoModal({
             <div className="flex justify-end px-6">
               <LoadingButton
                 type="submit"
-                // disabled={title === "" || priority === undefined}
+                disabled={title === "" || title === null || title === undefined}
                 data-cy="modal-add-save-button"
               >
                 Simpan

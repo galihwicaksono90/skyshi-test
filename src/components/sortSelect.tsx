@@ -32,7 +32,16 @@ export const sortOptions = {
   az: {
     label: "A-Z",
     fn: (todos) => {
-      return todos.sort((a, b) => a.title.localeCompare(b.title));
+      return todos.sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+      // return todos.sort((a, b) => a.title.localeCompare(b.title));
     },
     icon: <ArrowDownAZ />,
   },
@@ -40,7 +49,16 @@ export const sortOptions = {
     label: "Z-A",
 
     fn: (todos) => {
-      return todos.sort((a, b) => b.title.localeCompare(a.title));
+      // return todos.sort((a, b) => b.title.localeCompare(a.title));
+      return todos.sort((a, b) => {
+        if (a.title > b.title) {
+          return -1;
+        }
+        if (a.title < b.title) {
+          return 1;
+        }
+        return 0;
+      });
     },
     icon: <ArrowUpAZ />,
   },
@@ -49,7 +67,7 @@ export const sortOptions = {
     fn: (todos) => {
       const arr: TodoItem[] = [];
       todos.forEach((todo) => {
-        if (todo.is_active === 1) {
+        if (todo.is_active === 0) {
           arr.push(todo);
           return;
         }
