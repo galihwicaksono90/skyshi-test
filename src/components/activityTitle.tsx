@@ -37,36 +37,34 @@ export default function ActivityTitle({
   }, [ref, isEditing]);
 
   const onEdit = () => {
-    setIsEditing((o) => !o);
+    if (isEditing) {
+      mutate({
+        title: currentTitle,
+        id: id,
+      });
+      return;
+    }
+
+    setIsEditing(true);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    mutate({
-      title: currentTitle,
-      id: id,
-    });
-  };
+  // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   mutate({
+  //     title: currentTitle,
+  //     id: id,
+  //   });
+  // };
 
   return (
     <>
       {isEditing ? (
-        <form onSubmit={handleSubmit}>
-          <Input
-            value={currentTitle}
-            onChange={(e) => setCurrentTitle(e.target.value)}
-            className="border-b-slate-500 border-t-0 border-r-0 border-l-0 rounded-none text-4xl font-bold"
-            ref={ref}
-          />
-          <Button
-            className="rounded-full w-5 p-0 text-muted-foreground"
-            variant="ghost"
-            data-cy="todo-title-edit-button"
-            type="submit"
-          >
-            <Pencil />
-          </Button>
-        </form>
+        <Input
+          value={currentTitle}
+          onChange={(e) => setCurrentTitle(e.target.value)}
+          className="border-b-slate-500 border-t-0 border-r-0 border-l-0 rounded-none text-4xl font-bold"
+          ref={ref}
+        />
       ) : (
         <>
           <h1
@@ -75,16 +73,16 @@ export default function ActivityTitle({
           >
             {currentTitle}
           </h1>
-          <Button
-            className="rounded-full w-5 p-0 text-muted-foreground"
-            variant="ghost"
-            onClick={onEdit}
-            data-cy="todo-title-edit-button"
-          >
-            <Pencil />
-          </Button>
         </>
       )}
+      <Button
+        className="rounded-full w-5 p-0 text-muted-foreground"
+        variant="ghost"
+        onClick={onEdit}
+        data-cy="todo-title-edit-button"
+      >
+        <Pencil />
+      </Button>
     </>
   );
 }

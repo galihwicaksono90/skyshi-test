@@ -8,6 +8,7 @@ import CreateTodoDialog from "./createTodoDialog";
 import { useState } from "react";
 import { useCreateTodo } from "@/hooks/useCreateTodo";
 import { useToast } from "./ui/use-toast";
+import CreateTodoModal from "./createTodoModal";
 
 interface TodoPageHeaderProps {
   id: string;
@@ -64,9 +65,9 @@ export default function TodoPageHeader({
           Tambah
         </Button>
       </div>
-      <CreateTodoDialog
+      <CreateTodoModal
         open={open}
-        onOpenChange={(value) => setOpen(value)}
+        setOpen={(value) => setOpen(value)}
         onConfirm={handleConfirm}
         loading={loading}
       />

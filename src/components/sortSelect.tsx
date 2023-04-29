@@ -5,7 +5,6 @@ import {
   ArrowUpNarrowWide,
   ArrowDownAZ,
   ArrowUpAZ,
-  LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components//ui/button";
 import { Trigger } from "@radix-ui/react-select";

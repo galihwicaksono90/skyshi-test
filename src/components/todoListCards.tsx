@@ -8,7 +8,6 @@ import { useUpdateTodo, useDeleteTodo } from "@/hooks/mutations";
 import PriorityDot from "@/components/priorityDot";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
-import DeleteDialog from "@/components/deleteDialog";
 import UpdateTodoDialog from "@/components/updateTodoDialog";
 import { Priority } from "@/types";
 import TodoEmptyState from "@/components/emptyTodo";
@@ -16,6 +15,8 @@ import TodoPageHeader from "./todoPageHeader";
 import { useToast } from "./ui/use-toast";
 import Loading from "./loading";
 import { SortOption, sortTodo } from "./sortSelect";
+import DeleteModal from "./deleteModal";
+import UpdateTodoModal from "./updateTodoModal";
 
 export default function TodoListCards({ id }: { id: string }) {
   const { toast } = useToast();
@@ -66,18 +67,12 @@ export default function TodoListCards({ id }: { id: string }) {
     }
   };
 
-  const onUpdateTodo = ({
-    title,
-    priority,
-  }: {
-    title: string;
-    priority: Priority;
-  }) => {
+  const onUpdateTodo = (values: { title: string; priority: string }) => {
     if (!!updateId) {
       updateTodo({
         id: updateId,
-        title,
-        priority,
+        title: values.title,
+        priority: values.priority as Priority,
       });
     }
   };
@@ -152,18 +147,31 @@ export default function TodoListCards({ id }: { id: string }) {
           ))}
         </ul>
       )}
-      <UpdateTodoDialog
+      <UpdateTodoModal
         id={updateId}
         open={!!updateId}
-        onUpdate={onUpdateTodo}
-        onOpenChange={(value) => {
-          if (!value) {
-            setUpdateId(null);
-          }
-        }}
+        onConfirm={onUpdateTodo}
         loading={updating}
+        setOpen={() => setUpdateId(null)}
       />
-      <DeleteDialog
+      {/* <UpdateTodoDialog */}
+      {/*   id={updateId} */}
+      {/*   open={!!updateId} */}
+      {/*   onUpdate={onUpdateTodo} */}
+      {/*   onOpenChange={(value) => { */}
+      {/*     if (!value) { */}
+      {/*       setUpdateId(null); */}
+      {/*     } */}
+      {/*   }} */}
+      {/*   loading={updating} */}
+      {/* /> */}
+      {/* <DeleteDialog */}
+      {/*   title={toDelete?.title ?? ""} */}
+      {/*   open={!!toDelete?.id} */}
+      {/*   setOpen={onOpenDeleteDialog} */}
+      {/*   onConfirm={onDeleteTodo} */}
+      {/* /> */}
+      <DeleteModal
         title={toDelete?.title ?? ""}
         open={!!toDelete?.id}
         setOpen={onOpenDeleteDialog}

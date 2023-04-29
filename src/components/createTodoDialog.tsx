@@ -12,6 +12,7 @@ import PrioritySelect from "@/components/prioritySelect";
 import { FormEvent, useEffect, useState } from "react";
 import { Separator } from "./ui/separator";
 import { Priority } from "@/types";
+import PrioritySelector from "./prioritySelector";
 
 type TodoDialogProps = DialogProps & {
   onConfirm: (values: { priority: string; title: string }) => void;
@@ -62,9 +63,9 @@ export default function CreateTodoDialog({
             </div>
             <div className="w-60">
               <Label htmlFor="name">Priority</Label>
-              <PrioritySelect
-                value={priority}
-                onValueChange={(value) => setPriority(value as Priority)}
+              <PrioritySelector
+                value={priority as Priority}
+                onChange={(value: Priority) => setPriority(value as Priority)}
               />
             </div>
           </div>

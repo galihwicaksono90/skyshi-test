@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import DeleteDialog from "@/components/deleteDialog";
 import Loading from "./loading";
+import DeleteModal from "./deleteModal";
 
 export default function Activiti() {
   const [currentActivity, setCurrentActivity] = useState<{
@@ -99,7 +100,13 @@ export default function Activiti() {
       ) : (
         <ActivityEmptyState />
       )}
-      <DeleteDialog
+      {/* <DeleteDialog */}
+      {/*   open={!!currentActivity?.id} */}
+      {/*   setOpen={onOpen} */}
+      {/*   onConfirm={onDelete} */}
+      {/*   title={currentActivity?.title ?? ""} */}
+      {/* /> */}
+      <DeleteModal
         open={!!currentActivity?.id}
         setOpen={onOpen}
         onConfirm={onDelete}
