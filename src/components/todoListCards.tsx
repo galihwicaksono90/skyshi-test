@@ -105,7 +105,7 @@ export default function TodoListCards({ id }: { id: string }) {
         <ul className="flex flex-col space-y-4 w-full">
           {sortTodo(data?.todo_items ?? [], sort).map((item) => (
             <li key={item.id}>
-              <Card className="p-8 w-full">
+              <Card className="p-8 w-full" data-cy="todo-item">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <Checkbox
@@ -121,6 +121,7 @@ export default function TodoListCards({ id }: { id: string }) {
                         item.is_active === 1 ? "" : "line-through",
                         "text-lg"
                       )}
+                      data-cy="todo-item-title"
                     >
                       {item.title}
                     </p>
